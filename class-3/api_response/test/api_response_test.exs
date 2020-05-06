@@ -48,6 +48,25 @@ defmodule ApiResponseTest do
     end
   end
 
+  describe "handle_response_control_structure_with" do
+    test "returns 'Ok'" do
+      assert ApiResponse.handle_response_1_control_structure_with({:ok, %{city: 'Buenos Aires'}}) ==
+               "Ok"
+    end
+
+    test "returns 'Error'" do
+      assert ApiResponse.handle_response_1_control_structure_with(
+               {:error, %{country: 'Argentina'}}
+             ) ==
+               "Error"
+    end
+
+    test "returns :no_match_message_error" do
+      assert ApiResponse.handle_response_1_control_structure_with({:what, %{sport: 'Fútbol'}}) ==
+               :no_match_message_error
+    end
+  end
+
   describe "handle_response_with_functions" do
     test "returns 'Ok'" do
       assert ApiResponse.handle_response_1_with_functions({:ok, %{city: 'Buenos Aires'}}) == "Ok"
