@@ -4,6 +4,8 @@ defmodule FizzBuzz do
   """
 
   @doc """
+  Implemented with the Control Structure "Cond"
+
   Taking three arguments.
   If the first two are zero, return “FizzBuzz”.
   If the first is zero, return “Fizz”.
@@ -34,6 +36,8 @@ defmodule FizzBuzz do
   end
 
   @doc """
+  Implemented with the Control Structure "Case"
+
   Taking three arguments.
   If the first two are zero, return “FizzBuzz”.
   If the first is zero, return “Fizz”.
