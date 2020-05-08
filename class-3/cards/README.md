@@ -1,6 +1,9 @@
-# App
+# Card Game
 
-**TODO: Add description**
+## Description
+
+Each player throw a card that is selected from his hand. 
+If the card is the winner card, the player wins the game.
 
 ## Installation
 
