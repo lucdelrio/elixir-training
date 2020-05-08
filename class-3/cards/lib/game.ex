@@ -16,7 +16,7 @@ defmodule Game do
   end
 
   @doc """
-    Returns one card from a player hand
+    Checks if the player wins
 
   ## Examples
     iex> game = Game.create_game("Ace of Clubs")
