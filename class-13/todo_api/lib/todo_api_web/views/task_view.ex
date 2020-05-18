@@ -2,8 +2,8 @@ defmodule TodoApiWeb.TaskView do
   use TodoApiWeb, :view
   alias TodoApiWeb.TaskView
 
-  def render("index.json", %{task: task}) do
-    %{data: render_many(task, TaskView, "task.json")}
+  def render("index.json", %{tasks: tasks}) do
+    %{data: render_many(tasks, TaskView, "task.json")}
   end
 
   def render("show.json", %{task: task}) do

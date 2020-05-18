@@ -18,7 +18,8 @@ defmodule TodoApi.Tasks do
 
   """
   def list_tasks do
-    Repo.all(Task)
+    Task
+    |> Repo.all()
   end
 
   @doc """
@@ -37,12 +38,12 @@ defmodule TodoApi.Tasks do
   """
   def get_tasks!(id), do: Repo.get!(Task, id)
 
-  # def get(id) do
-  #   case task = Repo.get(Task, id) do
-  #     %Task{} -> {:ok, task}
-  #     nil -> {:error, :not_found}
-  #   end
-  # end
+  def get(id) do
+    case task = Repo.get(Task, id) do
+      %Task{} -> {:ok, task}
+      nil -> {:error, :not_found}
+    end
+  end
 
   @doc """
   Creates a tasks.
@@ -57,18 +58,19 @@ defmodule TodoApi.Tasks do
 
   """
   def create_tasks(attrs \\ %{}) do
-    %Task{}
-    |> Task.changeset(attrs)
-    |> Repo.insert()
-    # task =
-    #   %Task{}
-    #   |> Task.changeset(attrs)
-    #   |> Repo.insert()
+    # %Task{}
+    # |> Task.changeset(attrs)
+    # |> Repo.insert()
 
-    # case task do
-    #   {:ok, task} -> {:ok.task()}
-    #   {:error, changeset} -> {:error, changeset}
-    # end
+    task =
+      %Task{}
+      |> Task.changeset(attrs)
+      |> Repo.insert()
+
+    case task do
+      {:ok, task} -> {:ok.task()}
+      {:error, changeset} -> {:error, changeset}
+    end
   end
 
   @doc """
@@ -84,9 +86,12 @@ defmodule TodoApi.Tasks do
 
   """
   def update_tasks(%Task{} = tasks, attrs) do
-    tasks
-    |> Task.changeset(attrs)
-    |> Repo.update()
+    tasks = Task.changeset(attrs)
+
+    case Repo.update(tasks) do
+      {:ok, task} -> {:ok, task}
+      {:error, changeset} -> {:error, changeset}
+    end
   end
 
   @doc """
