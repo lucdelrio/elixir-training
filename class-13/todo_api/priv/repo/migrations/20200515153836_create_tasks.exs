@@ -9,6 +9,5 @@ defmodule TodoApi.Repo.Migrations.CreateTasks do
 
       timestamps()
     end
-
   end
 end

@@ -17,7 +17,7 @@ defmodule TodoApiWeb.TaskControllerTest do
   @invalid_attrs %{date: nil, description: nil, name: nil}
 
   def fixture(:tasks) do
-    {:ok, tasks} = Task.create_tasks(@create_attrs)
+    {:ok, tasks} = Tasks.create_tasks(@create_attrs)
     tasks
   end
 

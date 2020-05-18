@@ -37,10 +37,12 @@ defmodule TodoApi.Tasks do
   """
   def get_tasks!(id), do: Repo.get!(Task, id)
 
-  def get(id) do
-    Task
-    |> Repo.get!(id)
-  end
+  # def get(id) do
+  #   case task = Repo.get(Task, id) do
+  #     %Task{} -> {:ok, task}
+  #     nil -> {:error, :not_found}
+  #   end
+  # end
 
   @doc """
   Creates a tasks.
@@ -58,6 +60,15 @@ defmodule TodoApi.Tasks do
     %Task{}
     |> Task.changeset(attrs)
     |> Repo.insert()
+    # task =
+    #   %Task{}
+    #   |> Task.changeset(attrs)
+    #   |> Repo.insert()
+
+    # case task do
+    #   {:ok, task} -> {:ok.task()}
+    #   {:error, changeset} -> {:error, changeset}
+    # end
   end
 
   @doc """

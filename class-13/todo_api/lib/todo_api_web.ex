@@ -24,6 +24,8 @@ defmodule TodoApiWeb do
       import Plug.Conn
       import TodoApiWeb.Gettext
       alias TodoApiWeb.Router.Helpers, as: Routes
+
+      action_fallback TodoApiWeb.FallbackController
     end
   end
 

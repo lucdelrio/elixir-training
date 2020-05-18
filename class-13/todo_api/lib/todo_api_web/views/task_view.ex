@@ -6,7 +6,7 @@ defmodule TodoApiWeb.TaskView do
     %{data: render_many(task, TaskView, "task.json")}
   end
 
-  def render("show.json", %{tasks: tasks}) do
+  def render("show.json", %{task: task}) do
     %{data: render_one(task, TaskView, "task.json")}
   end
 
@@ -14,14 +14,11 @@ defmodule TodoApiWeb.TaskView do
     %{msg: render_many(errors, TaskView, "invalid_schema.json")}
   end
 
-  def render("invalid_schema.json", {key , [msg, _] }) do
+  def render("invalid_schema.json", {key, [msg, _]}) do
     %{key: key, msg: msg}
   end
 
   def render("task.json", %{task: task}) do
-    %{id: task.id,
-      name: task.name,
-      description: task.description,
-      date: task.date}
+    %{id: task.id, name: task.name, description: task.description, date: task.date}
   end
 end
